@@ -1,62 +1,33 @@
-# docker-laravel 🐳
+# Laravel - test
 
-<p align="center">
-    <img src="https://user-images.githubusercontent.com/35098175/145682384-0f531ede-96e0-44c3-a35e-32494bd9af42.png" alt="docker-laravel">
-</p>
-<p align="center">
-    <img src="https://github.com/ucan-lab/docker-laravel/actions/workflows/laravel-create-project.yml/badge.svg" alt="Test laravel-create-project.yml">
-    <img src="https://github.com/ucan-lab/docker-laravel/actions/workflows/laravel-git-clone.yml/badge.svg" alt="Test laravel-git-clone.yml">
-    <img src="https://img.shields.io/github/license/ucan-lab/docker-laravel" alt="License">
-</p>
+## Instalace
 
-## Introduction
-
-Build a simple laravel development environment with docker-compose. Compatible with Windows(WSL2), macOS(M1) and Linux.
-
-## Usage
-
-1. Git clone & change directory
-2. Execute the following command
-
+1. V příkazové řádce spustit:
 ```bash
-$ make create-project # Install the latest Laravel project
-$ make install-recommend-packages # Optional
+$ make create-project
+$ make install-recommend-packages
+$ make init
 ```
 
-site domain : http://localhost
+## Spuštění
+1. Projekt se spouští příkazem `$ make up`
+2. URL adresa je `localhost`
+3. URL adresa pro PHPMyAdmin `localhost:7002` (přihlašovací údaje: USER: test, PASSWORD: test, DATABASE: test)
 
-phpmyadmin access : http://localhost:7002
 
-## Tips
+## Ostatní
 
-- Read this [Makefile](https://github.com/ucan-lab/docker-laravel/blob/main/Makefile).
-- Read this [Wiki](https://github.com/ucan-lab/docker-laravel/wiki).
+1. Další příkazy najdete v souboru: `/Makefile`
 
-## Container structures
+
+## API URLs 
 
 ```bash
-├── app
-├── web
-└── db
+GET /api/tasks – výpis úkolů 
+GET /api/tasks/{id} – detail úkolu
+POST /api/tasks – vytvoření nového úkolu
+PUT /api/tasks/{id} – aktualizace úkolu
+DELETE /api/tasks/{id} – smazání úkolu
 ```
 
-### app container
 
-- Base image
-  - [php](https://hub.docker.com/_/php):8.1-fpm-bullseye
-  - [composer](https://hub.docker.com/_/composer):2.2
-
-### web container
-
-- Base image
-  - [nginx](https://hub.docker.com/_/nginx):1.22
-
-### db container
-
-- Base image
-  - [mysql/mysql-server](https://hub.docker.com/r/mysql/mysql-server):8.0
-
-### mailhog container
-
-- Base image
-  - [mailhog/mailhog](https://hub.docker.com/r/mailhog/mailhog)
